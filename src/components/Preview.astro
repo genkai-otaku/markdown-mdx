@@ -1,0 +1,14 @@
+---
+type Props = {
+  label?: string
+}
+
+const { label = 'プレビュー' } = Astro.props
+---
+
+<figure class="preview">
+  <figcaption class="preview-label">{label}</figcaption>
+  <div class="preview-body">
+    <slot />
+  </div>
+</figure>

@@ -1,14 +1,13 @@
 # react-mdx
 
-Markdown と JSX を一つの `.mdx` ファイルに書いたものを、React コンポーネントとして表示する学習用の雛形です。Vite が `.mdx` をコンパイルし、普通のページと同じように描画します。
+よく使う Markdown の記法を短くまとめた静的サイトです。ページは `.mdx` で、見た目のほとんどは Markdown です。React コンポーネントを動かす説明だけ、ブラウザで島として動かします。Astro がビルド時に HTML を生成します。
 
 ## 技術スタック
 
-- React 19
-- Vite 7
+- Astro 7（静的出力）
 - TypeScript
-- MDX 3（`@mdx-js/rollup` / `@mdx-js/react`）
-- remark-gfm
+- MDX（`@astrojs/mdx`）
+- React 19（動く部品だけ。`@astrojs/react`）
 - Nix flake + direnv（Node.js / pnpm）
 
 ## ディレクトリ構成
@@ -16,14 +15,15 @@ Markdown と JSX を一つの `.mdx` ファイルに書いたものを、React �
 ```
 .
 ├── flake.nix
-├── pnpm-workspace.yaml
-├── vite.config.ts
+├── astro.config.ts
 ├── src/
-│   ├── App.tsx
-│   ├── mdx-components.tsx
-│   ├── components/
-│   └── pages/          # .mdx の本文
-└── index.html
+│   ├── layouts/        # 共通レイアウト
+│   ├── components/     # Preview / Callout（Astro）、Counter / LikeButton（React）
+│   ├── pages/
+│   │   ├── index.mdx   # マークダウンの書き方
+│   │   └── mdx/        # MDX の説明
+│   └── styles/
+└── public/
 ```
 
 ## セットアップ
@@ -35,7 +35,7 @@ direnv allow
 pnpm install
 ```
 
-Nix を使わない場合は、Node.js 20 以降と pnpm を用意して `pnpm install` してください。
+Nix を使わない場合は、Node.js 22 以降と pnpm を用意して `pnpm install` してください。
 
 ## コマンド
 
@@ -45,7 +45,7 @@ Nix を使わない場合は、Node.js 20 以降と pnpm を用意して `pnpm i
 pnpm dev
 ```
 
-ブラウザで http://localhost:5173 を開きます。`src/pages/` の `.mdx` を保存するとすぐ反映されます。
+ブラウザで http://localhost:4321 を開きます。`src/pages/` の `.mdx` を保存するとすぐ反映されます。
 
 ### 型チェック
 

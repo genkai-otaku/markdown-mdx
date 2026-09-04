@@ -1,0 +1,54 @@
+---
+layout: ../../layouts/Doc.astro
+title: MDX の記法
+description: Markdown に、JSX と JavaScript の式を足した書き方です。
+---
+
+import Callout from '../../components/Callout.astro'
+import Preview from '../../components/Preview.astro'
+
+export function Badge({ children }) {
+  return <span class="badge">{children}</span>
+}
+
+# MDX の記法
+
+見出し・リスト・表などの Markdown は [マークダウンの書き方](/) にまとめています。MDX で足すのは、JSX と中括弧の式です。
+
+## JSX を混ぜる
+
+文の途中にコンポーネントを置けます。下のバッジは、このファイル先頭の `export function Badge` です。
+
+```mdx
+export function Badge({ children }) {
+  return (
+    <span class="badge">{children}</span>
+  )
+}
+
+文の途中に <Badge>MDX 内で定義したバッジ</Badge> を置けます。
+```
+
+<Preview>
+文の途中に <Badge>MDX 内で定義したバッジ</Badge> を置けます。
+</Preview>
+
+## 式を埋め込む
+
+中括弧の中は JavaScript です。
+
+```mdx
+いまの年は {new Date().getFullYear()} 年です。
+```
+
+<Preview>
+いまの年は {new Date().getFullYear()} 年です。
+</Preview>
+
+静的サイトでは、この値は **ビルドした時点** で HTML に書き込まれます。ページを開くたびに計算し直すわけではありません。
+
+<Callout type="tip" title="コンポーネントの渡し方">
+  `<Callout />` はこのファイルでは定義していません。先頭で import しています。
+</Callout>
+
+[コンポーネントの埋め込み](/mdx/components) では、状態を持つ UI の置き方を見ます。
