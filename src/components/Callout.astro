@@ -1,0 +1,23 @@
+---
+type CalloutType = 'info' | 'warn' | 'tip'
+
+type Props = {
+  type?: CalloutType
+  title?: string
+}
+
+const labels: Record<CalloutType, string> = {
+  info: 'メモ',
+  warn: '注意',
+  tip: 'コツ',
+}
+
+const { type = 'info', title } = Astro.props
+---
+
+<aside class={`callout callout-${type}`} role="note">
+  <p class="callout-label">{title ?? labels[type]}</p>
+  <div class="callout-body">
+    <slot />
+  </div>
+</aside>

@@ -1,0 +1,68 @@
+---
+layout: ../../layouts/Doc.astro
+title: コンポーネントを埋め込む
+description: MDX から React コンポーネントを呼び、必要なものだけブラウザで動かします。
+---
+
+import Callout from '../../components/Callout.astro'
+import Preview from '../../components/Preview.astro'
+import { Counter } from '../../components/Counter'
+import { LikeButton } from '../../components/LikeButton'
+
+# コンポーネントを埋め込む
+
+MDX の強みは、文章の途中に **状態を持つ UI** を置けることです。このサイトでは、動かす部品にだけ `client:load` を付けています。
+
+## import して埋め込む
+
+このファイル先頭で `Counter` を import しています。
+
+```mdx
+import { Counter } from '../../components/Counter'
+
+<Counter client:load initial={3} />
+```
+
+<Preview>
+  <Counter client:load initial={3} />
+</Preview>
+
+`client:load` は「静的 HTML のうえに、ブラウザで React を載せる」印です。これがないとボタンは絵として出るだけで動きません。
+
+## ハイドレーションしない部品
+
+`Callout` は Astro コンポーネントです。見た目だけなので、JavaScript を送りません。
+
+```mdx
+import Callout from '../../components/Callout.astro'
+
+<Callout type="warn" title="同じファイルに文章と UI を置く">
+  説明は Markdown、その場で触れる部品だけ React、枠付きのメモは Astro、という分け方です。
+</Callout>
+```
+
+<Preview>
+  <Callout type="warn" title="同じファイルに文章と UI を置く">
+    説明は Markdown、その場で触れる部品だけ React、枠付きのメモは Astro、という分け方です。
+  </Callout>
+</Preview>
+
+## もう一つの React 部品
+
+```mdx
+<LikeButton client:load label="カウンターが動いた" />
+```
+
+<Preview>
+  <LikeButton client:load label="カウンターが動いた" />
+</Preview>
+
+`LikeButton` も `client:load` 付きです。クリックの状態は、このブラウザの中だけに残ります。
+
+## 次にいじるとよい場所
+
+1. `src/pages/` の `.mdx` を書き換える
+2. `src/components/` にコンポーネントを足して、MDX から呼ぶ
+3. 動かすものにだけ `client:load` を付ける
+
+[マークダウンの書き方](/) に戻る。

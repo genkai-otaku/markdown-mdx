@@ -1,27 +1,25 @@
 {
-  "name": "react-mdx",
+  "name": "markdown-tutorial",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit"
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check"
   },
   "dependencies": {
-    "@mdx-js/react": "^3.1.1",
+    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/react": "^6.0.5",
+    "astro": "^7.3.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@mdx-js/rollup": "^3.1.1",
-    "@types/mdx": "^2.0.13",
+    "@astrojs/check": "^0.9.10",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "@vitejs/plugin-react": "^5.0.4",
-    "remark-gfm": "^4.0.1",
-    "typescript": "~5.9.3",
-    "vite": "^7.1.9"
+    "typescript": "~5.9.3"
   }
 }

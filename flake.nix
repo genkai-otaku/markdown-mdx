@@ -1,5 +1,5 @@
 {
-  description = "react-mdx — MDX を試すための React 雛形";
+  description = "よく使う Markdown の記法をまとめた静的サイト";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -21,7 +21,7 @@
           ];
 
           shellHook = ''
-            echo "react-mdx devShell"
+            echo "markdown docs devShell"
             echo "  node: $(node -v)"
             echo "  pnpm: $(pnpm -v)"
           '';

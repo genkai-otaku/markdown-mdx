@@ -1,0 +1,30 @@
+---
+layout: ../../layouts/Doc.astro
+title: MDX とは
+description: Markdown に JSX を足したファイル形式です。このサイトでは動く部品が必要なページだけ使っています。
+---
+
+import Callout from '../../components/Callout.astro'
+
+# MDX とは
+
+`.mdx` は **Markdown + JSX** です。見た目は Markdown ですが、React コンポーネントを文中に置けます。
+
+Markdown の記法そのものは [マークダウンの書き方](/) を見てください。ページは `.mdx` ですが、見た目のほとんどは Markdown です。カウンターのように **状態を持つ UI** が必要なところだけ、React を載せています。
+
+<Callout type="info">
+  今読んでいるこのページは `src/pages/mdx/index.mdx` です。枠付きのメモはコンポーネントです。
+</Callout>
+
+## 何が起きているか
+
+1. Astro が `.md` / `.mdx` を HTML に変換する
+2. Markdown のページは JavaScript なしで表示できる
+3. MDX から呼んだ React コンポーネントは、`client:load` を付けたものだけブラウザで動く
+
+つまり `.mdx` は「文章ファイル」であると同時に「コンポーネントを埋め込めるページ」です。
+
+## このあとのページ
+
+- [MDX の記法](/mdx/syntax) — JSX を混ぜる、式を埋め込む
+- [コンポーネント](/mdx/components) — import や `client:load` で動く UI を置く
