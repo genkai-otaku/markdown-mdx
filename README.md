@@ -1,4 +1,4 @@
-# react-mdx
+# markdown-mdx
 
 よく使う Markdown の記法を短くまとめた静的サイトです。ページは `.mdx` で、見た目のほとんどは Markdown です。React コンポーネントを動かす説明だけ、ブラウザで島として動かします。Astro がビルド時に HTML を生成します。
 
@@ -20,8 +20,12 @@
 │   ├── layouts/        # 共通レイアウト
 │   ├── components/     # Preview / Callout（Astro）、Counter / LikeButton（React）
 │   ├── pages/
-│   │   ├── index.mdx   # マークダウンの書き方
-│   │   └── mdx/        # MDX の説明
+│   │   ├── index.mdx          # マークダウンの書き方
+│   │   ├── 404.astro
+│   │   └── mdx/
+│   │       ├── index.mdx      # MDX とは
+│   │       ├── syntax.mdx     # MDX の記法
+│   │       └── components.mdx # コンポーネントの埋め込み
 │   └── styles/
 └── public/
 ```
@@ -35,7 +39,7 @@ direnv allow
 pnpm install
 ```
 
-Nix を使わない場合は、Node.js 22 以降と pnpm を用意して `pnpm install` してください。
+Nix を使わない場合は、Node.js 22.12 以降と pnpm を用意して `pnpm install` してください。
 
 ## コマンド
 
@@ -59,3 +63,5 @@ pnpm typecheck
 pnpm build
 pnpm preview
 ```
+
+`pnpm build` は型チェックのあと、静的 HTML を `dist/` に出力します。`pnpm preview` はその成果物を確認します。
