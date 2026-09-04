@@ -1,0 +1,27 @@
+export const heading = 'MDX とは何か'
+
+# {heading}
+
+`.mdx` は **Markdown + JSX** を一つのファイルに書いたものです。見た目は Markdown ですが、中身は React コンポーネントにコンパイルされます。
+
+この雛形では、`src/pages/` 以下の `.mdx` を `import` して、普通の React コンポーネントと同じように描画しています。
+
+<Callout type="info">
+  今読んでいるこのページ自体が `src/pages/Home.mdx` です。見出し・箇条書きは
+  Markdown、枠付きのメモは React コンポーネント `<Callout />` です。
+</Callout>
+
+## 何が起きているか
+
+1. Vite が `@mdx-js/rollup` で `.mdx` を JavaScript に変換する
+2. 変換結果の default export が React コンポーネントになる
+3. `App.tsx` がそれを `<Page />` として描画する
+
+つまり `.mdx` は「文章ファイル」であると同時に「コンポーネント」です。
+
+## このサイトで試せること
+
+- [書き方](/syntax) — Markdown・JSX・props・表
+- [試す](/playground) — カウンターなど、動くコンポーネントの埋め込み
+
+ファイルを開いて書き換えると、開発サーバーがすぐに反映します。
