@@ -1,0 +1,34 @@
+import { Counter } from '../components/Counter'
+
+# 動かして試す
+
+MDX の強みは、文章の途中に **状態を持つ UI** を置けることです。
+
+## import して埋め込む
+
+下のカウンターは、このファイル先頭で `Counter` を import しています。
+
+<Counter initial={3} />
+
+```mdx
+import { Counter } from '../components/Counter'
+
+<Counter initial={3} />
+```
+
+## Provider 経由で埋め込む
+
+`LikeButton` は import していません。`mdx-components.tsx` に登録してあるので、名前だけで使えます。
+
+<LikeButton label="カウンターが動いた" />
+
+<Callout type="warn" title="同じファイルに文章と UI を置く">
+  ドキュメントサイトや、操作説明つきのチュートリアルでよく使う書き方です。
+  説明文を Markdown で書き、その場で触れる部品だけ React にします。
+</Callout>
+
+## 次にいじるとよい場所
+
+1. `src/pages/` の `.mdx` を書き換える
+2. `src/components/` にコンポーネントを足して、MDX から呼ぶ
+3. `src/mdx-components.tsx` で `h2` や `code` の見た目を差し替える
